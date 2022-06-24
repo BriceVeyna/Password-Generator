@@ -1,5 +1,10 @@
 // Assignment code here
-
+var passwordText = {
+  lowerCase: [];
+  upperCase: [];
+  numeric: [];
+  specialCharacter: [];
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
