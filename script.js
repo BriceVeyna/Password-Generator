@@ -6,25 +6,45 @@ var passwordCharacter = {
   specialCharacter: [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
 };
 
-// promt for total length of password
-var passwordLengthString = prompt("Length of password (8 - 128): ");
-var passwordLengthNumber = parseInt(passwordLengthString);
-var passwordLengthType = typeof(passwordLengthNumber);
-// check that the password is at least 8 characters and no more than 128 characters
-if (passwordLenghtType !== "number") {
-  alert("Password length must be a number");
-  passwordLengthString;
-} else if (passwordLengthNumber <= 8 || passwordLengthNumber >= 128) {
-  alert("Password length must be between 8 and 128");
-  passwordLengthString;
-} else {
-  
+// function prompts user for total length of password, alerts them if they enter an invalid value and prompts them again
+function getLength() {
+
+  var passwordLengthString = prompt("Length of password (8 - 128): ");
+  var passwordLengthNumber = parseInt(passwordLengthString);
+  var passwordLengthType = typeof(passwordLengthNumber);
+
+  // check that the password length is a number and a value between 8 and 128
+  if (passwordLenghtType !== "number") {
+    alert("Password length must be a number");
+    passwordLengthString;
+  } else if (passwordLengthNumber <= 8 || passwordLengthNumber >= 128) {
+    alert("Password length must be between 8 and 128");
+    passwordLengthString;
+  } else {
+    getCharacterTypes();
+  }
 }
-// confirm character types to include (lower case, upper case, numeric, special character)
-var includeLowerCase = confirm("Include lower case letters?");
-var includeUpperCase = confirm("Include upper case letters?");
-var includeNumeric = confirm("Include numbers?");
-var includeSpecialCharacter = confirm("Include special characters?")?
+
+// function confirms character types to include (lower case, upper case, numeric, special character), alerts user if no type was selected and prompts them again
+function getCharacterTypes() {
+
+  var includeLowerCase = confirm("Include lower case letters?");
+  var includeUpperCase = confirm("Include upper case letters?");
+  var includeNumeric = confirm("Include numbers?");
+  var includeSpecialCharacter = confirm("Include special characters?")?
+
+  // check that at least one character type was selected
+  if (includeLowerCase === false && includeUpperCase === false && includeNumeric === false && includeSpecialCharacter === false) {
+      alert("Password must include at least 1 type of character");
+      includeLowerCase;
+      includeUpperCase;
+      includeNumeric;
+      includeSpecialCharacter;
+  } else {
+      generatePassword();
+  }
+}
+
 // confirm choice of password length and character types (at least one)
 
 prompt("You have selected a password length of " + passwordLength + );
