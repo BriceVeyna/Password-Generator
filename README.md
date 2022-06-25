@@ -12,9 +12,7 @@ There were many javascript operations demonstrated throughout the course of this
 
 ![Confirm](./Confirm_Character_Type.png)
 
-can be used to display a message to the user and gather information from them in response. Another useful tool is also on display, as the user respose is displayed to the console for developer feedback as to the functionality of the program. 
-
-
+can be used to display a message to the user and gather information from them in response. Another useful tool is also on display, as the user respose is displayed to the console for developer feedback as to the functionality of the program. Boundary condition checks are also another neccessary component in an application such as this. In the below example, an alert message is sent to the user if no character types are selected and the function is looped back to the start. If there is at least one, it is allowed to continue.
 
 ![Check Loop](./Character_Type_Check_Loop.png)
 
