@@ -6,7 +6,7 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacter = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 // Global password length, character type inclusion variables
-var passwordLengthNumber = 0;
+var passwordLength = 0;
 var includeLowerCase = false;
 var includeUpperCase = false;
 var includeNumeric = false;
@@ -15,7 +15,7 @@ var includeSpecialCharacter = false;
 // function prompts user for total length of password, alerts them if they enter an invalid value and prompts them again
 function getLength() {
 
-  var passwordLength = parseInt(prompt("Length of password (8 - 128): "));
+  passwordLength = parseInt(prompt("Length of password (8 - 128): "));
   var passwordLengthType = typeof passwordLength;
 
   // check that the password length is a number and a value between 8 and 128
@@ -74,23 +74,29 @@ function getCharacterTypes() {
 function generatePassword() {
 
   // random number generator for type of character
-  var randomCharacter = Math.floor(Math.random() * trueCharacterTypes.length-1);
-
-  var characterType = trueCharacterTypes.toString(randomCharacter);
+  var randomCharacterNumber = Math.floor(Math.random() * trueCharacterTypes.length);
+  console.log(randomCharacterNumber);
+  var randomCharacterType = trueCharacterTypes[randomCharacterNumber];
+  console.log(randomCharacterType);
 
   //random number generator for position within respective array
-  if (characterType === lowerCase) {
-    Math.floor(Math.random() * lowerCase.length);
-  } else if (characterType === upperCase) {
-    Math.floor(Math.random() * upperCase.length);
-  } else if (characterType === numeric) {
-    Math.floor(Math.random() * numeric.length);
-  } else {
-    Math.floor(Math.random() * specialCharacter.length);
+  for (var i = 0; i < passwordLength; i++) {
+    if (randomCharacterType === lowerCase) {
+      Math.floor(Math.random() * lowerCase.length);
+    } else if (randomCharacterTyp === upperCase) {
+      Math.floor(Math.random() * upperCase.length);
+    } else if (randomCharacterTyp === numeric) {
+      Math.floor(Math.random() * numeric.length);
+    } else {
+      Math.floor(Math.random() * specialCharacter.length);
+    }
+    
+    randomPassword.push();
+
+    console.log(randomPassword.join("+"));
   }
 
 }
-
 
 // display password (alert or written to page)
 function displayPassword() {
