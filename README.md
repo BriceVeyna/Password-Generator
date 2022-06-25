@@ -16,6 +16,8 @@ can be used to display a message to the user and gather information from them in
 
 ![Check Loop](./Character_Type_Check_Loop.png)
 
+The actual random number generation is accomplished by applying a random number operation to the length of an array containing the character types set up in the confirm statements. This number is then used to select a character type array. A similar process is done for subsequently pulling a value from that array to be used as the final character value.
+
 ![Random Number Generation](./Random_Number_Character_Type.png)
 
 ## Technology Used
