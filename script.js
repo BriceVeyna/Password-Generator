@@ -1,12 +1,12 @@
-// Assignment code here
-var passwordCharacter = {
-  lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
-  upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-  numeric: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
-  specialCharacter: [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
-};
+// Global arrays
+var randomPassword = [];
+var trueCharacterTypes = [];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialCharacter = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
-// create global password length, character type inclusion variables
+// Global password length, character type inclusion variables
 var passwordLengthNumber = 0;
 var includeLowerCase = false;
 var includeUpperCase = false;
@@ -16,9 +16,8 @@ var includeSpecialCharacter = false;
 // function prompts user for total length of password, alerts them if they enter an invalid value and prompts them again
 function getLength() {
 
-  var passwordLengthString = prompt("Length of password (8 - 128): ");
-  passwordLengthNumber = parseInt(passwordLengthString);
-  var passwordLengthType = typeof passwordLengthNumber;
+  var passwordLength = parseInt(prompt("Length of password (8 - 128): "));
+  var passwordLengthType = typeof passwordLength;
 
   // check that the password length is a number and a value between 8 and 128
   if (passwordLengthType !== "number") {
@@ -59,19 +58,17 @@ function getCharacterTypes() {
 function generatePassword() {
 
   // random number generator for type of character
-  var trueCharacterTypes = []
-
   if (includeLowerCase === true) {
-    trueCharacterTypes.push(passwordCharacter.lowerCase);
+    trueCharacterTypes.push(lowerCase);
   }
   if (includeUpperCase === true) {
-    trueCharacterTypes.push(passwordCharacter.upperCase);
+    trueCharacterTypes.push(upperCase);
   }
   if (includeNumeric === true) {
-    trueCharacterTypes.push(passwordCharacter.numeric);
+    trueCharacterTypes.push(numeric);
   }
   if (includeSpecialCharacter === true) {
-    trueCharacterTypes.push(passwordCharacter.specialCharacter);
+    trueCharacterTypes.push(specialCharacter);
   }
 
   var randomCharacter = Math.floor(Math.random() * trueCharacterTypes.length-1);
@@ -79,21 +76,21 @@ function generatePassword() {
   var characterType = trueCharacterTypes.toString(randomCharacter);
 
   //random number generator for position within respective array
-  if (characterType === passwordCharacter.lowerCase) {
-    Math.floor(Math.random() * passwordCharacter.lowerCase.length);
-  } else if (characterType === passwordCharacter.upperCase) {
-    Math.floor(Math.random() * passwordCharacter.upperCase.length);
-  } else if (characterType === passwordCharacter.numeric) {
-    Math.floor(Math.random() * passwordCharacter.numeric.length);
+  if (characterType === lowerCase) {
+    Math.floor(Math.random() * lowerCase.length);
+  } else if (characterType === upperCase) {
+    Math.floor(Math.random() * upperCase.length);
+  } else if (characterType === numeric) {
+    Math.floor(Math.random() * numeric.length);
   } else {
-    Math.floor(Math.random() * passwordCharacter.specialCharacter.length);
+    Math.floor(Math.random() * specialCharacter.length);
   }
 
 }
 
 
 // display password (alert or written to page)
-alert("Password:" + )
+alert("Password:" + randomPassword)
 
 
 
