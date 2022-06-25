@@ -5,7 +5,6 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacter = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-
 // Global password length, character type inclusion variables
 var passwordLengthNumber = 0;
 var includeLowerCase = false;
@@ -22,34 +21,51 @@ function getLength() {
   // check that the password length is a number and a value between 8 and 128
   if (passwordLengthType !== "number") {
     alert("Password length must be a number");
-    passwordLengthString = prompt("Length of password (8 - 128): ");
-    passwordLengthNumber = parseInt(passwordLengthString);
-  } else if (passwordLengthNumber < 8 || passwordLengthNumber > 128) {
+    passwordLengthString = parseInt(prompt("Length of password (8 - 128): "));
+  } else if (passwordLength < 8 || passwordLength > 128) {
     alert("Password length must be between 8 and 128");
-    passwordLengthString = prompt("Length of password (8 - 128): ");
-    passwordLengthNumber = parseInt(passwordLengthString);
+    passwordLength = parseInt(prompt("Length of password (8 - 128): "));
   } else {
     getCharacterTypes();
+    console.log("Password length is valid.");
   }
 }
 
 // function confirms character types to include (lower case, upper case, numeric, special character), alerts user if no type was selected and prompts them again
 function getCharacterTypes() {
 
+  // confirm character type, add to trueCharacterTypes array if selected
   includeLowerCase = confirm("Include lower case letters?");
-  includeUpperCase = confirm("Include upper case letters?");
-  includeNumeric = confirm("Include numbers?");
-  includeSpecialCharacter = confirm("Include special characters?");
+  if (includeLowerCase === true) {
+    trueCharacterTypes.push(lowerCase);
+  }
+  console.log("Lower case: ", includeLowerCase);
 
-  // check that at least one character type was selected
+  includeUpperCase = confirm("Include upper case letters?");
+  if (includeUpperCase === true) {
+    trueCharacterTypes.push(upperCase);
+  }
+  console.log("Upper case: ", includeUpperCase);
+
+  includeNumeric = confirm("Include numbers?");
+  if (includeNumeric === true) {
+    trueCharacterTypes.push(numeric);
+  }
+  console.log("Numeric: ", includeNumeric);
+
+  includeSpecialCharacter = confirm("Include special characters?");
+  if (includeSpecialCharacter === true) {
+    trueCharacterTypes.push(specialCharacter);
+  }
+  console.log("Special character: ", includeSpecialCharacter);
+
+  // check that at least one character type was selected, if not restart function
   if (includeLowerCase === false && includeUpperCase === false && includeNumeric === false && includeSpecialCharacter === false) {
       alert("Password must include at least 1 type of character");
-      includeLowerCase;
-      includeUpperCase;
-      includeNumeric;
-      includeSpecialCharacter;
+      getCharacterTypes();
   } else {
       generatePassword();
+      console.log(trueCharacterTypes);
   }
 }
 
@@ -58,19 +74,6 @@ function getCharacterTypes() {
 function generatePassword() {
 
   // random number generator for type of character
-  if (includeLowerCase === true) {
-    trueCharacterTypes.push(lowerCase);
-  }
-  if (includeUpperCase === true) {
-    trueCharacterTypes.push(upperCase);
-  }
-  if (includeNumeric === true) {
-    trueCharacterTypes.push(numeric);
-  }
-  if (includeSpecialCharacter === true) {
-    trueCharacterTypes.push(specialCharacter);
-  }
-
   var randomCharacter = Math.floor(Math.random() * trueCharacterTypes.length-1);
 
   var characterType = trueCharacterTypes.toString(randomCharacter);
@@ -90,8 +93,9 @@ function generatePassword() {
 
 
 // display password (alert or written to page)
-alert("Password:" + randomPassword)
-
+function displayPassword() {
+  alert("Password:" + randomPassword)
+}
 
 
 // Get references to the #generate element
