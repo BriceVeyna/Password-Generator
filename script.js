@@ -5,6 +5,7 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacter = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+
 // Global password length, character type inclusion variables
 var passwordLength = 0;
 var includeLowerCase = false;
@@ -69,40 +70,55 @@ function getCharacterTypes() {
   }
 }
 
-
 // generate password
 function generatePassword() {
 
   // random number generator for type of character
-  var randomCharacterNumber = Math.floor(Math.random() * trueCharacterTypes.length);
-  console.log(randomCharacterNumber);
-  var randomCharacterType = trueCharacterTypes[randomCharacterNumber];
+  var randomCharacterTypeNumber = Math.floor(Math.random() * trueCharacterTypes.length);
+  console.log(randomCharacterTypeNumber);
+  var randomCharacterType = trueCharacterTypes[randomCharacterTypeNumber];
   console.log(randomCharacterType);
 
   //random number generator for position within respective array
+  var randomCharacterNumber = 0;
+  var randomCharacter = 0;
+  
   for (var i = 0; i < passwordLength; i++) {
     if (randomCharacterType === lowerCase) {
-      Math.floor(Math.random() * lowerCase.length);
-    } else if (randomCharacterTyp === upperCase) {
-      Math.floor(Math.random() * upperCase.length);
-    } else if (randomCharacterTyp === numeric) {
-      Math.floor(Math.random() * numeric.length);
+      randomCharacterNumber = Math.floor(Math.random() * lowerCase.length);
+      randomCharacter = lowerCase[randomCharacterNumber];
+      randomPassword.push(randomCharacter);
+      console.log(randomCharacter);
+    } else if (randomCharacterType === upperCase) {
+      randomCharacterNumber = Math.floor(Math.random() * upperCase.length);
+      randomCharacter = upperCase[randomCharacterNumber];
+      randomPassword.push(randomCharacter);
+      console.log(randomCharacter);
+    } else if (randomCharacterType === numeric) {
+      randomCharacterNumber = Math.floor(Math.random() * numeric.length);
+      randomCharacter = numeric[randomCharacterNumber];
+      randomPassword.push(randomCharacter);
+      console.log(randomCharacter);
     } else {
-      Math.floor(Math.random() * specialCharacter.length);
+      randomCharacterNumber = Math.floor(Math.random() * specialCharacter.length);
+      randomCharacter = specialCharacter[randomCharacterNumber];
+      randomPassword.push(randomCharacter);
+      console.log(randomCharacter);
     }
-    
-    randomPassword.push();
 
-    console.log(randomPassword.join("+"));
   }
+
+  displayPassword();
 
 }
 
 // display password (alert or written to page)
 function displayPassword() {
-  alert("Password:" + randomPassword)
-}
+  var stringPassword = randomPassword.toString();
+  var newPassword = stringPassword.replace(",", "");
 
+  alert("Password:" + newPassword);
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
