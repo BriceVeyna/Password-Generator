@@ -58,34 +58,42 @@ function getCharacterTypes() {
 // generate password
 function generatePassword() {
 
-  // Convert boolean values to binary values
-  var binaryLowerCase = Number(includeLowerCase);
-  var binaryUpperCase = Number(ncludeUpperCase);
-  var binaryNumeric = Number(includeNumeric);
-  var binarySpecialCharacter = Number(includeSpecialCharacter);
-  var numberCharacterTypes = binaryLowerCase + binaryUpperCase + binaryNumeric + binarySpecialCharacter;
+  // random number generator for type of character
+  var trueCharacterTypes = []
 
-  for (var i = 0; i < passwordLengthNumber; i++) {
-    //random number generator for type of character
-    if (numberCharacterTypes === 4) {
-      Math.floor(Math.random() * numberCharacterTypes);
-    }
-    //random number generator for position within respective array
-    if (characterType === lowerCase) {
-      Math.floor(Math.random() * passwordCharacter.lowerCase.length);
-    } else if (characterType === upperCase) {
-      Math.floor(Math.random() * passwordCharacter.upperCase.length);
-    } else if (characterType === numeric) {
-      Math.floor(Math.random() * passwordCharacter.numeric.length);
-    } else {
-      Math.floor(Math.random() * passwordCharacter.specialCharacter.length);
-    }
+  if (includeLowerCase === true) {
+    trueCharacterTypes.push(passwordCharacter.lowerCase);
+  }
+  if (includeUpperCase === true) {
+    trueCharacterTypes.push(passwordCharacter.upperCase);
+  }
+  if (includeNumeric === true) {
+    trueCharacterTypes.push(passwordCharacter.numeric);
+  }
+  if (includeSpecialCharacter === true) {
+    trueCharacterTypes.push(passwordCharacter.specialCharacter);
+  }
 
+  var randomCharacter = Math.floor(Math.random() * trueCharacterTypes.length-1);
+
+  var characterType = trueCharacterTypes.toString(randomCharacter);
+
+  //random number generator for position within respective array
+  if (characterType === passwordCharacter.lowerCase) {
+    Math.floor(Math.random() * passwordCharacter.lowerCase.length);
+  } else if (characterType === passwordCharacter.upperCase) {
+    Math.floor(Math.random() * passwordCharacter.upperCase.length);
+  } else if (characterType === passwordCharacter.numeric) {
+    Math.floor(Math.random() * passwordCharacter.numeric.length);
+  } else {
+    Math.floor(Math.random() * passwordCharacter.specialCharacter.length);
   }
 
 }
-// display password (alert or written to page)
 
+
+// display password (alert or written to page)
+alert("Password:" + )
 
 
 
