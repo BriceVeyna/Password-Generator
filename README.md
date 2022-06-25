@@ -8,12 +8,17 @@ This project takes the static base for a webpage to generate random passwords an
 [Password-Generator](https://briceveyna.github.io/Password-Generator/)
 
 ## Usage
+There were many javascript operations demonstrated throughout the course of this project that interact to produce the end product. Some of these include the prompt, confirm, and alert methods to display dialog boxes. These methods, such as the one shown below:
 
-[Confirm](./Confirm_Character_Type.png)
+![Confirm](./Confirm_Character_Type.png)
 
-[Check Loop](./Character_Type_Check_Loop.png)
+can be used to display a message to the user and gather information from them in response. Another useful tool is also on display, as the user respose is displayed to the console for developer feedback as to the functionality of the program. 
 
-[Random Number Generation](./Random_Number_Character_Type.png)
+
+
+![Check Loop](./Character_Type_Check_Loop.png)
+
+![Random Number Generation](./Random_Number_Character_Type.png)
 
 ## Technology Used
 JavaScript
