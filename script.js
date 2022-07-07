@@ -7,28 +7,30 @@ var numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharacter = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 // Global password length, character type inclusion variables
-var passwordLength = 0;
+var passwordLength;
 var includeLowerCase = false;
 var includeUpperCase = false;
 var includeNumeric = false;
 var includeSpecialCharacter = false;
 
-// function prompts user for total length of password, alerts them if they enter an invalid value and prompts them again
+// Function prompts user for total length of password, alerts them if they enter an invalid value and prompts them again.
 function getLength() {
 
-  passwordLength = parseInt(prompt("Length of password (8 - 128): "));
-  var passwordLengthType = typeof passwordLength;
+  passwordLength = prompt("Length of password (8 - 128): ");
+  console.log(passwordLength);
 
-  // check that the password length is a number and a value between 8 and 128
-  if (passwordLengthType !== "number") {
+  // Check that the password length is a number and a value between 8 and 128. If it is, initialize getCharacterTypes function; if not, alert user and start function over.
+  if (isNaN(passwordLength)) {
+    console.log("Password length is invalid.");
     alert("Password length must be a number");
-    passwordLengthString = parseInt(prompt("Length of password (8 - 128): "));
+    getLength();
   } else if (passwordLength < 8 || passwordLength > 128) {
+    console.log("Password length is invalid.");
     alert("Password length must be between 8 and 128");
-    passwordLength = parseInt(prompt("Length of password (8 - 128): "));
+    getLength();
   } else {
-    getCharacterTypes();
     console.log("Password length is valid.");
+    getCharacterTypes();
   }
 }
 
@@ -109,15 +111,15 @@ function generatePassword() {
   }
 
   displayPassword();
+  // writePassword();
 
 }
 
 // display password (alert or written to page)
 function displayPassword() {
-  var stringPassword = randomPassword.toString();
-  var newPassword = stringPassword.replace(",", "");
+  var stringPassword = randomPassword.join("");
 
-  alert("Password:" + newPassword);
+  alert("Password:" + stringPassword);
 }
 
 // Get references to the #generate element
@@ -125,7 +127,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = randomPassword.join("");
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -133,7 +135,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Start program
-getLength();
+generateBtn.addEventListener("click", getLength);
