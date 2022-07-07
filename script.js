@@ -75,17 +75,18 @@ function getCharacterTypes() {
 // generate password
 function generatePassword() {
 
-  // random number generator for type of character
-  var randomCharacterTypeNumber = Math.floor(Math.random() * trueCharacterTypes.length);
-  console.log(randomCharacterTypeNumber);
-  var randomCharacterType = trueCharacterTypes[randomCharacterTypeNumber];
-  console.log(randomCharacterType);
-
   //random number generator for position within respective array
   var randomCharacterNumber = 0;
   var randomCharacter = 0;
   
   for (var i = 0; i < passwordLength; i++) {
+
+    // random number generator for type of character
+    var randomCharacterTypeNumber = Math.floor(Math.random() * trueCharacterTypes.length);
+    console.log(randomCharacterTypeNumber);
+    var randomCharacterType = trueCharacterTypes[randomCharacterTypeNumber];
+    console.log(randomCharacterType);
+
     if (randomCharacterType === lowerCase) {
       randomCharacterNumber = Math.floor(Math.random() * lowerCase.length);
       randomCharacter = lowerCase[randomCharacterNumber];
