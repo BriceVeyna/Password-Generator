@@ -13,36 +13,36 @@ This project takes the static base for a webpage to generate random passwords an
 ## Usage
 To initialize this program, simply click the generate password button.
 
-![Initialize]()
+![Initialize](./assets/images/Initialize.JPG)
 
 You will first be prompted with a pop-up asking to input the number value for your desired password length.
 
-![Prompt]()
+![Prompt](./assets/images/Prompt.JPG)
 
 You will then be asked in a series of pop-ups to confirm which character types to include in the password.
 
-![Confirm]()
+![Confirm](./assets/images/Confirm.JPG)
 
 If you enter an invalid response to the length pop-up, you will be told the password length parameters again and prompted again to enter a valid number. If you do not select at least one character type, you will also be told the character type parameter again and repeat the character selection process.
 
-![Alert]()
+![Alert](./assets/images/Alert.JPG)
 
 Once all the inputs have been given, your new password will be displayed in the central text field.
 
-![Complete]()
+![Complete](./assets/images/Complete.JPG)
 
 ## Features
 There were many javascript operations demonstrated throughout the course of this project that interact to produce the end product. Some of these include the prompt, confirm, and alert methods to display dialog boxes. These methods, such as the one shown below:
 
-![Confirm](./Confirm_Character_Type.png)
+![Confirm](./assets/images/Confirm_Character_Type.png)
 
 can be used to display a message to the user and gather information from them in response. Another useful tool is also on display, as the user respose is displayed to the console for developer feedback as to the functionality of the program. Boundary condition checks are also another neccessary component in an application such as this. In the below example, an alert message is sent to the user if no character types are selected and the function is looped back to the start. If there is at least one, it is allowed to continue.
 
-![Check Loop](./Character_Type_Check_Loop.png)
+![Check Loop](./assets/images/Character_Type_Check_Loop.png)
 
 The actual random number generation is accomplished by applying a random number operation to the length of an array containing the character types set up in the confirm statements. This number is then used to select a character type array. A similar process is done for subsequently pulling a value from that array to be used as the final character value.
 
-![Random Number Generation](./Random_Number_Character_Type.png)
+![Random Number Generation](./assets/images/Random_Number_Character_Type.png)
 
 ## Questions
 If you have any additional questions, feel free to reach out.
